@@ -13,12 +13,14 @@ namespace Xavalon.XamlStyler.UnitTests
     [TestFixture]
     public class FileHandlingIntegrationTests
     {
+        private const string ConfigurationDir = "TestConfigurations";
+
         [TestCase(0)]
         [TestCase(4)]
         public void TestAttributeIndentationHandling(byte attributeIndentation)
         {
             var stylerOptions = new StylerOptions(
-                config: this.GetConfiguration(@"TestConfigurations\LegacyTestSettings.json"))
+                config: this.GetConfiguration(Path.Combine(ConfigurationDir, "LegacyTestSettings.json")))
             {
                 AttributeIndentation = attributeIndentation,
                 AttributesTolerance = 0,
@@ -34,7 +36,7 @@ namespace Xavalon.XamlStyler.UnitTests
         public void TestDesignReferenceRemoval()
         {
             var stylerOptions = new StylerOptions(
-                config: this.GetConfiguration(@"TestConfigurations\LegacyTestSettings.json"))
+                config: this.GetConfiguration(Path.Combine(ConfigurationDir, "LegacyTestSettings.json")))
             {
                 RemoveDesignTimeReferences = true
             };
@@ -46,7 +48,7 @@ namespace Xavalon.XamlStyler.UnitTests
         public void TestAttributeThresholdHandling()
         {
             var stylerOptions = new StylerOptions(
-                config: this.GetConfiguration(@"TestConfigurations\LegacyTestSettings.json"))
+                config: this.GetConfiguration(Path.Combine(ConfigurationDir, "LegacyTestSettings.json")))
             {
                 AttributesTolerance = 0,
                 MaxAttributeCharactersPerLine = 80,
@@ -61,7 +63,7 @@ namespace Xavalon.XamlStyler.UnitTests
         public void TestAttributeToleranceHandling()
         {
             var stylerOptions = new StylerOptions(
-                config: this.GetConfiguration(@"TestConfigurations\LegacyTestSettings.json"))
+                config: this.GetConfiguration(Path.Combine(ConfigurationDir, "LegacyTestSettings.json")))
             {
                 AttributesTolerance = 3,
                 RootElementLineBreakRule = LineBreakRule.Always,
@@ -100,7 +102,7 @@ namespace Xavalon.XamlStyler.UnitTests
         public void TestSuppressedDefaultHandling()
         {
             var stylerOptions = new StylerOptions(
-                config: this.GetConfiguration(@"TestConfigurations\LegacyTestSettings.json"))
+                config: this.GetConfiguration(Path.Combine(ConfigurationDir, "LegacyTestSettings.json")))
             {
                 SuppressProcessing = true
             };
@@ -112,7 +114,7 @@ namespace Xavalon.XamlStyler.UnitTests
         public void TestAttributeSortingOptionHandling()
         {
             var stylerOptions = new StylerOptions(
-                config: this.GetConfiguration(@"TestConfigurations\LegacyTestSettings.json"))
+                config: this.GetConfiguration(Path.Combine(ConfigurationDir, "LegacyTestSettings.json")))
             {
                 AttributeOrderingRuleGroups = new[]
                 {
@@ -148,7 +150,7 @@ namespace Xavalon.XamlStyler.UnitTests
         public void TestxBindSplitting()
         {
             var stylerOptions = new StylerOptions(
-                config: this.GetConfiguration(@"TestConfigurations\LegacyTestSettings.json"))
+                config: this.GetConfiguration(Path.Combine(ConfigurationDir, "LegacyTestSettings.json")))
             {
                 NoNewLineMarkupExtensions = "x:Bind"
             };
@@ -160,7 +162,7 @@ namespace Xavalon.XamlStyler.UnitTests
         public void TestBindingSplitting()
         {
             var stylerOptions = new StylerOptions(
-                config: this.GetConfiguration(@"TestConfigurations\LegacyTestSettings.json"))
+                config: this.GetConfiguration(Path.Combine(ConfigurationDir, "LegacyTestSettings.json")))
             {
                 NoNewLineMarkupExtensions = "x:Bind, Binding"
             };
@@ -175,7 +177,7 @@ namespace Xavalon.XamlStyler.UnitTests
         public void TestMarkupExtensionHandling(bool indentWithTabs, int tabSize)
         {
             var stylerOptions = new StylerOptions(
-                config: this.GetConfiguration(@"TestConfigurations\LegacyTestSettings.json"))
+                config: this.GetConfiguration(Path.Combine(ConfigurationDir, "LegacyTestSettings.json")))
             {
                 FormatMarkupExtension = true,
                 IndentWithTabs = indentWithTabs,
@@ -190,7 +192,7 @@ namespace Xavalon.XamlStyler.UnitTests
         public void TestNestedCustomMarkupExtensionsWithBindings()
         {
             var stylerOptions = new StylerOptions(
-                config: this.GetConfiguration(@"TestConfigurations\LegacyTestSettings.json"))
+                config: this.GetConfiguration(Path.Combine(ConfigurationDir, "LegacyTestSettings.json")))
             {
                 KeepFirstAttributeOnSameLine = false,
                 AttributesTolerance = 1,
@@ -210,7 +212,7 @@ namespace Xavalon.XamlStyler.UnitTests
         public void TestMarkupWithAttributeNotOnFirstLine()
         {
             var stylerOptions = new StylerOptions(
-                config: this.GetConfiguration(@"TestConfigurations\LegacyTestSettings.json"))
+                config: this.GetConfiguration(Path.Combine(ConfigurationDir, "LegacyTestSettings.json")))
             {
                 KeepFirstAttributeOnSameLine = false,
                 AttributesTolerance = 1
@@ -259,7 +261,7 @@ namespace Xavalon.XamlStyler.UnitTests
         public void TestNestedPropertiesAndChildrenHandling()
         {
             var stylerOptions = new StylerOptions(
-                config: this.GetConfiguration(@"TestConfigurations\LegacyTestSettings.json"))
+                config: this.GetConfiguration(Path.Combine(ConfigurationDir, "LegacyTestSettings.json")))
             {
                 ReorderVSM = VisualStateManagerRule.First
             };
@@ -271,7 +273,7 @@ namespace Xavalon.XamlStyler.UnitTests
         public void TestKeepSelectAttributesOnFirstLine()
         {
             var stylerOptions = new StylerOptions(
-                config: this.GetConfiguration(@"TestConfigurations\LegacyTestSettings.json"))
+                config: this.GetConfiguration(Path.Combine(ConfigurationDir, "LegacyTestSettings.json")))
             {
                 FirstLineAttributes = "x:Name, x:Key"
             };
@@ -283,7 +285,7 @@ namespace Xavalon.XamlStyler.UnitTests
         public void TestAttributeOrderRuleGroupsOnSeparateLinesHandling()
         {
             var stylerOptions = new StylerOptions(
-                config: this.GetConfiguration(@"TestConfigurations\LegacyTestSettings.json"))
+                config: this.GetConfiguration(Path.Combine(ConfigurationDir, "LegacyTestSettings.json")))
             {
                 PutAttributeOrderRuleGroupsOnSeparateLines = true,
                 MaxAttributesPerLine = 3,
@@ -298,7 +300,7 @@ namespace Xavalon.XamlStyler.UnitTests
         public void TestReorderSetterHandling(ReorderSettersBy reorderSettersBy)
         {
             var stylerOptions = new StylerOptions(
-                config: this.GetConfiguration(@"TestConfigurations\LegacyTestSettings.json"))
+                config: this.GetConfiguration(Path.Combine(ConfigurationDir, "LegacyTestSettings.json")))
             {
                 ReorderSetters = reorderSettersBy,
             };
@@ -311,7 +313,7 @@ namespace Xavalon.XamlStyler.UnitTests
         public void TestClosingElementHandling(int testNumber, bool spaceBeforeClosingSlash)
         {
             var stylerOptions = new StylerOptions(
-                config: this.GetConfiguration(@"TestConfigurations\LegacyTestSettings.json"))
+                config: this.GetConfiguration(Path.Combine(ConfigurationDir, "LegacyTestSettings.json")))
             {
                 SpaceBeforeClosingSlash = spaceBeforeClosingSlash
             };
@@ -337,7 +339,7 @@ namespace Xavalon.XamlStyler.UnitTests
         public void TestThicknessHandling(ThicknessStyle thicknessStyle)
         {
             var stylerOptions = new StylerOptions(
-                config: this.GetConfiguration(@"TestConfigurations\LegacyTestSettings.json"))
+                config: this.GetConfiguration(Path.Combine(ConfigurationDir, "LegacyTestSettings.json")))
             {
                 ThicknessStyle = thicknessStyle
             };
@@ -351,7 +353,7 @@ namespace Xavalon.XamlStyler.UnitTests
         public void TestRootHandling(int testNumber, LineBreakRule lineBreakRule)
         {
             var stylerOptions = new StylerOptions(
-                config: this.GetConfiguration(@"TestConfigurations\LegacyTestSettings.json"))
+                config: this.GetConfiguration(Path.Combine(ConfigurationDir, "LegacyTestSettings.json")))
             {
                 AttributesTolerance = 3,
                 MaxAttributesPerLine = 4,
@@ -372,7 +374,7 @@ namespace Xavalon.XamlStyler.UnitTests
         public void TestWildCard()
         {
             var stylerOptions = new StylerOptions(
-                config: this.GetConfiguration(@"TestConfigurations\LegacyTestSettings.json"))
+                config: this.GetConfiguration(Path.Combine(ConfigurationDir, "LegacyTestSettings.json")))
             {
                 AttributeOrderingRuleGroups = new[]
                 {
@@ -400,7 +402,7 @@ namespace Xavalon.XamlStyler.UnitTests
         public void TestVisualStateManagerNone()
         {
             var stylerOptions = new StylerOptions(
-                config: this.GetConfiguration(@"TestConfigurations\LegacyTestSettings.json"))
+                config: this.GetConfiguration(Path.Combine(ConfigurationDir, "LegacyTestSettings.json")))
             {
                 ReorderVSM = VisualStateManagerRule.None
             };
@@ -412,7 +414,7 @@ namespace Xavalon.XamlStyler.UnitTests
         public void TestVisualStateManagerFirst()
         {
             var stylerOptions = new StylerOptions(
-                config: this.GetConfiguration(@"TestConfigurations\LegacyTestSettings.json"))
+                config: this.GetConfiguration(Path.Combine(ConfigurationDir, "LegacyTestSettings.json")))
             {
                 ReorderVSM = VisualStateManagerRule.First
             };
@@ -424,7 +426,7 @@ namespace Xavalon.XamlStyler.UnitTests
         public void TestVisualStateManagerLast()
         {
             var stylerOptions = new StylerOptions(
-                config: this.GetConfiguration(@"TestConfigurations\LegacyTestSettings.json"))
+                config: this.GetConfiguration(Path.Combine(ConfigurationDir, "LegacyTestSettings.json")))
             {
                 ReorderVSM = VisualStateManagerRule.Last
             };
@@ -488,7 +490,7 @@ namespace Xavalon.XamlStyler.UnitTests
         private StylerOptions GetLegacyStylerOptions()
         {
             return new StylerOptions(
-                config: this.GetConfiguration(@"TestConfigurations\LegacyTestSettings.json"));
+                config: this.GetConfiguration(Path.Combine("TestConfigurations", "LegacyTestSettings.json")));
         }
     }
 }

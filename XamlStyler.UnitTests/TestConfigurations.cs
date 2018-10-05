@@ -15,39 +15,41 @@ namespace Xavalon.XamlStyler.UnitTests
     [TestFixture]
     public sealed partial class UnitTests
     {
+        private const string ConfigurationDir = "TestConfigurations";
+
         [Test]
         public void TestConfiguration_Default()
         {
-            var stylerOptions = new StylerOptions(config: this.GetConfiguration(@"TestConfigurations\Default.json"));
-            this.TestConfig(stylerOptions, @"TestConfigurations\SerializedDefault.json");
+            var stylerOptions = new StylerOptions(config: this.GetConfiguration(Path.Combine(ConfigurationDir, "Default.json")));
+            this.TestConfig(stylerOptions, Path.Combine(ConfigurationDir, "SerializedDefault.json"));
         }
 
         [Test]
         public void TestConfiguration_Empty()
         {
-            var stylerOptions = new StylerOptions(config: this.GetConfiguration(@"TestConfigurations\Empty.json"));
-            this.TestConfig(stylerOptions, @"TestConfigurations\SerializedDefault.json");
+            var stylerOptions = new StylerOptions(config: this.GetConfiguration(Path.Combine(ConfigurationDir, "Empty.json")));
+            this.TestConfig(stylerOptions, Path.Combine(ConfigurationDir, "SerializedDefault.json"));
         }
 
         [Test]
         public void TestConfiguration_Single()
         {
-            var stylerOptions = new StylerOptions(config: this.GetConfiguration(@"TestConfigurations\Single.json"));
-            this.TestConfig(stylerOptions, @"TestConfigurations\Single.json");
+            var stylerOptions = new StylerOptions(config: this.GetConfiguration(Path.Combine(ConfigurationDir, "Single.json")));
+            this.TestConfig(stylerOptions, Path.Combine(ConfigurationDir, "Single.json"));
         }
 
         [Test]
         public void TestConfiguration_BadSetting()
         {
-            var stylerOptions = new StylerOptions(config: this.GetConfiguration(@"TestConfigurations\BadSetting.json"));
-            this.TestConfig(stylerOptions, @"TestConfigurations\SerializedDefault.json");
+            var stylerOptions = new StylerOptions(config: this.GetConfiguration(Path.Combine(ConfigurationDir, "BadSetting.json")));
+            this.TestConfig(stylerOptions, Path.Combine(ConfigurationDir, "SerializedDefault.json"));
         }
 
         [Test]
         public void TestConfiguration_AllDifferent()
         {
-            var stylerOptions = new StylerOptions(config: this.GetConfiguration(@"TestConfigurations\AllDifferent.json"));
-            this.TestConfig(stylerOptions, @"TestConfigurations\AllDifferent.json");
+            var stylerOptions = new StylerOptions(config: this.GetConfiguration(Path.Combine(ConfigurationDir, "AllDifferent.json")));
+            this.TestConfig(stylerOptions, Path.Combine(ConfigurationDir, "AllDifferent.json"));
         }
 
         private void TestConfig(StylerOptions stylerOptions, string expectedConfiguration)
